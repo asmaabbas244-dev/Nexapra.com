@@ -1,0 +1,254 @@
+/* ==========================================================
+   Process / Workflow Timeline
+   ========================================================== */
+
+.process {
+  overflow: hidden;
+}
+
+/* ---------- Header ---------- */
+.process__header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+.process__header .section-subtitle {
+  margin: 0 auto;
+}
+
+/* ---------- Timeline Container ---------- */
+.process__timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  padding-left: 40px;
+}
+
+/* ---------- Connecting Line ---------- */
+.process__line {
+  position: absolute;
+  left: 19px;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-border) 10%,
+    var(--color-primary-dim) 50%,
+    var(--color-border) 90%,
+    transparent
+  );
+}
+
+/* ---------- Step ---------- */
+.process__step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  position: relative;
+}
+
+/* ---------- Icon Wrapper ---------- */
+.process__icon-wrapper {
+  position: absolute;
+  left: -40px;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-border);
+  background: var(--color-bg);
+  transition: all var(--transition-base);
+  z-index: 2;
+}
+
+.process__icon-wrapper .process__number {
+  display: none;
+}
+
+.process__icon {
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-base);
+}
+
+.process__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Active step */
+.process__step--active .process__icon-wrapper {
+  position: relative;
+  border-color: var(--color-primary);
+  background: var(--color-bg);
+  box-shadow: 0 0 20px var(--color-primary-glow);
+  overflow: hidden;
+}
+
+.process__step--active .process__icon-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(74, 222, 128, 0.12);
+  pointer-events: none;
+}
+
+.process__step--active .process__icon {
+  position: relative;
+  z-index: 2;
+  color: var(--color-primary);
+}
+
+.process__step--active .process__title {
+  color: var(--color-primary);
+}
+
+/* ---------- Content ---------- */
+.process__content {
+  padding-top: var(--space-2);
+}
+
+.process__title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  transition: color var(--transition-base);
+}
+
+.process__description {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+/* ---------- Background Glow ---------- */
+.process__bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: var(--gradient-glow);
+  opacity: 0.04;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ==========================================================
+   Tablet — 768px+
+   ========================================================== */
+@media (min-width: 768px) {
+  .process__header {
+    margin-bottom: var(--space-20);
+  }
+
+  .process__timeline {
+    flex-direction: row;
+    gap: 0;
+    padding-left: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  /* Horizontal line */
+  .process__line {
+    left: 24px;
+    right: 24px;
+    top: 20px;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-border) 10%,
+      var(--color-primary-dim) 50%,
+      var(--color-border) 90%,
+      transparent
+    );
+  }
+
+  /* Step layout for desktop */
+  .process__step {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    gap: var(--space-4);
+  }
+
+  /* Icon wrapper — desktop positioning */
+  .process__icon-wrapper {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 48px;
+    height: 48px;
+  }
+
+  .process__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .process__content {
+    padding-top: 0;
+  }
+
+  .process__description {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+/* ==========================================================
+   Desktop — 1024px+
+   ========================================================== */
+@media (min-width: 1024px) {
+  .process__icon-wrapper {
+    width: 56px;
+    height: 56px;
+  }
+
+  .process__icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .process__title {
+    font-size: var(--text-xl);
+  }
+
+  .process__description {
+    font-size: var(--text-base);
+    max-width: 220px;
+  }
+
+  /* Hover effect on desktop */
+  .process__step:hover .process__icon-wrapper {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 16px var(--color-primary-glow);
+    transform: translateY(-4px);
+  }
+
+  .process__step:hover .process__icon {
+    color: var(--color-primary);
+  }
+
+  .process__step:hover .process__title {
+    color: var(--color-primary);
+  }
+}

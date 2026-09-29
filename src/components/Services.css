@@ -1,0 +1,167 @@
+/* ============================================================
+   Services Section 
+   ============================================================ */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+.service-card {
+  position: relative;
+  background: var(--color-bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card Header: Title left par aur icon right par */
+.service-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.service-title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+  flex: 1;
+}
+
+.service-icon-wrapper {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-3d-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.6));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.service-desc {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+/* Card Footer Layout (WHAT YOU GET & Arrow) */
+.service-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  user-select: none;
+}
+
+.what-you-get-text {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.05em;
+}
+
+/* Round Arrow Button Base */
+.card-arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* ============================================================
+   Expandable Content (By default hidden)
+   ============================================================ */
+.service-expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s ease, 
+              visibility 0.3s ease;
+}
+
+.service-expandable-content.show {
+  max-height: 500px;
+  opacity: 1;
+  visibility: visible;
+  margin-top: var(--space-4);
+}
+
+/* Benefits List Styling */
+.service-benefits {
+  padding-top: var(--space-3);
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.service-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.service-benefits-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.service-benefits-list li::before {
+  content: '✓';
+  color: #a3ff00;
+  font-weight: 800;
+}
+
+/* Mini Case Study */
+.mini-case-study {
+  margin-top: var(--space-4);
+  padding: var(--space-3);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-md);
+  border-left: 2px solid #a3ff00;
+}
+
+.mini-case-study-title {
+  font-size: var(--text-xs);
+  color: #a3ff00;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.mini-case-study-desc {
+  font-size: var(--text-sm);
+  color: #ccc;
+  font-style: italic;
+}

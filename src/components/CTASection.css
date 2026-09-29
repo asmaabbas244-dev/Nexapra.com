@@ -1,0 +1,151 @@
+/* ============================================================
+   CTA SECTION — Full-width call-to-action with animated glow orbs
+   ============================================================ */
+
+/* ---------- Section wrapper ---------- */
+.cta-section {
+  position: relative;
+  padding: var(--space-24) 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* ---------- Animated glow orbs (background decoration) ---------- */
+.cta-section::before,
+.cta-section::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Primary orb — green, center-left */
+.cta-section::before {
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: -5%;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.08) 0%, transparent 70%);
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Accent orb — cyan, center-right */
+.cta-section::after {
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  right: -5%;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+/* ---------- Glass-card inner container ---------- */
+.cta-section__inner {
+  position: relative;
+  z-index: var(--z-base);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-16) var(--space-12);
+  background: rgba(13, 17, 23, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  transition: border-color var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+.cta-section__inner:hover {
+  border-color: rgba(74, 222, 128, 0.3);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ---------- Badge (pill) ---------- */
+.cta-section__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  padding: var(--space-1) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-bg-secondary), var(--color-bg-secondary)) padding-box,
+    var(--gradient-primary) border-box;
+  margin-bottom: var(--space-6);
+}
+
+/* ---------- Title ---------- */
+.cta-section__title {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: var(--space-4);
+}
+
+/* Gradient text within the title inherits from the global .text-gradient utility */
+.cta-section__title .text-gradient {
+  display: inline;
+}
+
+/* ---------- Subtitle ---------- */
+.cta-section__subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+  margin-bottom: var(--space-8);
+}
+
+/* ---------- Button group ---------- */
+.cta-section__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: var(--space-16) 0;
+  }
+
+  .cta-section__inner {
+    padding: var(--space-8) var(--space-6);
+    margin: 0 var(--container-padding);
+  }
+
+  .cta-section__title {
+    font-size: var(--text-2xl);
+  }
+
+  .cta-section__subtitle {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-section__inner {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .cta-section__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-section__buttons .btn {
+    text-align: center;
+  }
+}

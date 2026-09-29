@@ -1,0 +1,600 @@
+/* ============================================================
+   Onboarding / Contact Section
+   ============================================================ */
+.contact {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-20) 0;
+}
+
+.onboarding-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 640px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-border-subtle);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+@media (min-width: 1024px) {
+  .onboarding-container {
+    flex-direction: row;
+    min-height: 700px;
+  }
+}
+
+/* ---------- Sidebar (Left Panel) ---------- */
+.onboarding__sidebar {
+  position: relative;
+  flex: 0 0 40%;
+  padding: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Background & Overlay */
+.onboarding__sidebar-bg {
+  position: absolute;
+  inset: 0;
+  /* Abstract dark tech background */
+  background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000') center/cover no-repeat;
+  z-index: 0;
+}
+
+.onboarding__sidebar-overlay {
+  position: absolute;
+  inset: 0;
+  /* Dark blue to transparent gradient with ~60% to 40% opacity */
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.4) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+.onboarding__sidebar-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.onboarding__step-indicator {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-6);
+}
+
+.onboarding__headline {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.onboarding__desc {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* Progress Steps */
+.onboarding__progress {
+  margin-top: auto;
+  padding-top: var(--space-10);
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  opacity: 0.4;
+  transition: opacity var(--transition-base);
+}
+
+.progress-step.active {
+  opacity: 1;
+}
+
+.progress-step.completed {
+  opacity: 0.8;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all var(--transition-base);
+}
+
+.progress-step.active .step-circle {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-bg);
+  box-shadow: var(--shadow-glow);
+}
+
+.progress-step.completed .step-circle {
+  border-color: var(--color-primary);
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.step-label {
+  font-weight: 500;
+  font-size: var(--text-sm);
+}
+
+/* ---------- Content (Right Panel) ---------- */
+.onboarding__content {
+  flex: 1;
+  padding: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-secondary);
+  position: relative;
+}
+
+.onboarding__step-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.step-subtitle {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+/* Selection Cards (3D Glass) */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  perspective: 1000px;
+}
+
+.option-card {
+  position: relative;
+  background: var(--color-bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.option-card:hover {
+  transform: translateY(-8px) rotateX(8deg) rotateY(-8deg);
+  border-color: rgba(74, 222, 128, 0.5);
+  box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.4), 
+              0 0 20px rgba(74, 222, 128, 0.15);
+}
+
+.option-card.selected {
+  border-color: var(--color-primary);
+  background: rgba(74, 222, 128, 0.08);
+  box-shadow: inset 0 0 0 1px var(--color-primary), 
+              0 10px 30px rgba(0,0,0,0.3),
+              var(--shadow-glow);
+  transform: translateY(-4px);
+}
+
+.option-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-2);
+  transform: translateZ(20px); /* 3D pop effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.option-title {
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: var(--color-text);
+  transform: translateZ(15px);
+}
+
+.option-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  transform: translateZ(10px);
+}
+
+/* Form Fields */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .form-grid.two-cols {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contact__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.contact__input {
+  width: 100%;
+  padding: var(--space-4);
+  font-size: var(--text-base);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition: all var(--transition-base);
+}
+
+.contact__input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-subtle);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.contact__textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* Actions */
+.onboarding__actions {
+  margin-top: auto;
+  padding-top: var(--space-8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.btn-prev {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid transparent;
+  font-weight: 600;
+}
+
+.btn-prev:hover {
+  color: var(--color-text);
+  background: rgba(255,255,255,0.05);
+}
+
+.btn-next {
+  margin-left: auto;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1023px) {
+  .onboarding__sidebar {
+    padding: var(--space-8) var(--space-6);
+    min-height: 260px;
+    flex: 0 0 auto;
+  }
+  
+  .onboarding__progress {
+    display: none; /* Hidden on mobile to keep hero clean */
+  }
+
+  .onboarding__content {
+    padding: var(--space-8) var(--space-6);
+  }
+  
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Custom Dropdown Styling */
+.region-select-wrapper {
+  margin-bottom: var(--space-6);
+  max-width: 420px;
+}
+
+.dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.contact__select {
+  width: 100%;
+  height: 48px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  padding: 12px 42px 12px 16px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  accent-color: var(--color-primary);
+  transition: all var(--transition-base);
+}
+
+/* Jab region select ho jaye tab accent color highlight hoga */
+.contact__select.selected {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.15);
+}
+
+/* Options dropdown menu list styling */
+.contact__select option {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-primary);
+  padding: 12px;
+}
+
+.contact__select option.placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.6;
+}
+
+/* Option Hover / Active State Override */
+.contact__select option:hover,
+.contact__select option:focus,
+.contact__select option:active,
+.contact__select option:checked {
+  background-color: var(--color-primary) !important;
+  color: #000000 !important;
+}
+
+/* Dropdown Arrow Icon Styling */
+.dropdown-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-base);
+}
+
+.contact__select.selected + .dropdown-arrow {
+  color: var(--color-primary);
+}
+
+/* Placeholder State Box */
+.region-prompt-box {
+  margin-top: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-bg-glass);
+  border: 1px dashed var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.region-prompt-box .step-subtitle {
+  margin-bottom: 0;
+  opacity: 0.8;
+}
+
+/* Layout Utilities for Dynamic Dropdowns */
+.mt-4 {
+  margin-top: 1rem !important;
+}
+
+.mt-6 {
+  margin-top: 1.5rem !important;
+}
+
+/* Compact Field Container Limit */
+.contact__field--compact {
+  max-width: 380px;
+  width: 100%;
+}
+
+/* DatePicker Wrapper Fix */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Input Icon Wrapper Alignment */
+.input-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Compact Inputs Styling */
+.contact__input--compact {
+  width: 100%;
+  padding: 8px 38px 8px 12px !important;
+  height: 40px;
+  font-size: 0.9rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition: all var(--transition-base);
+}
+
+.contact__input--compact:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.15);
+}
+
+/* Icon Position Inside Field */
+.input-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-base);
+}
+
+.input-icon-wrapper:focus-within .input-icon,
+.input-icon-wrapper:hover .input-icon {
+  color: var(--color-primary);
+}
+
+/* Custom File Button Theme Overrides */
+.contact__file-input::-webkit-file-upload-button {
+  background: var(--color-primary);
+  color: #000000;
+  border: none;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: opacity var(--transition-base);
+}
+
+.contact__file-input::-webkit-file-upload-button:hover {
+  opacity: 0.85;
+}
+
+/* File Hint Text matching theme */
+.file-hint {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+/* React DatePicker popup calendar background theme match */
+.react-datepicker {
+  background-color: var(--color-bg-secondary) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  color: var(--color-text) !important;
+  font-family: inherit !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.react-datepicker__header {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border-bottom: 1px solid var(--color-border-subtle) !important;
+}
+
+.react-datepicker__current-month, 
+.react-datepicker__day-name,
+.react-datepicker__day {
+  color: var(--color-text) !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: var(--color-primary) !important;
+  color: #000 !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--color-primary) !important;
+  color: #000 !important;
+}
+/* Custom Dropdown Styling (Dono Region aur Country wrappers ke liye identical sizing) */
+.region-select-wrapper,
+.country-select-wrapper {
+  margin-bottom: var(--space-6);
+  max-width: 420px; /* Dono boxes ka maximum width exact same 420px rahega */
+  width: 100%;
+}
+
+.dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.contact__select {
+  width: 100%;
+  height: 48px; /* Dono boxes ki height exact same 48px rahegi */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  padding: 12px 42px 12px 16px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  accent-color: var(--color-primary);
+  transition: all var(--transition-base);
+}

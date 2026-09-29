@@ -1,0 +1,123 @@
+.applicationPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px 20px;
+    background:linear-gradient(135deg,#081c15,#1b4332);
+}
+
+.applicationCard{
+    width:100%;
+    max-width:720px;
+    background:#fff;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
+}
+
+.applicationCard h2{
+    text-align:center;
+    color:#16a34a;
+    margin-bottom:10px;
+}
+
+.applicationCard p{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+}
+
+.inputGroup{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:18px;
+}
+
+.inputGroup label{
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.inputGroup input,
+.inputGroup textarea,
+.inputGroup select{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus,
+.inputGroup select:focus{
+    border-color:#16a34a;
+}
+
+.inputGroup textarea{
+    resize:vertical;
+}
+
+.submitBtn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#16a34a;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.submitBtn:hover{
+    background:#15803d;
+}
+
+.error{
+    color:red;
+    font-size:13px;
+    margin-top:5px;
+}
+
+@media(max-width:768px){
+
+.applicationCard{
+padding:22px;
+}
+
+}
+.applicationCard input,
+.applicationCard textarea,
+.applicationCard select {
+  font-family: inherit;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 10px;
+  background: #ffffff !important;
+  color: #222222 !important;
+  outline: none;
+}
+
+.applicationCard button {
+  width: 100%;
+  padding: 15px;
+  border: none !important;
+  border-radius: 10px;
+  background: #16a34a !important;
+  color: #ffffff !important;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.applicationCard label {
+  color: #222 !important;
+}
+
+.applicationCard input::placeholder,
+.applicationCard textarea::placeholder {
+  color: #888;
+}

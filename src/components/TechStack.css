@@ -1,0 +1,155 @@
+/* ==========================================================
+   Tech Stack Showcase
+   ========================================================== */
+
+.tech-stack {
+  overflow: hidden;
+}
+
+/* ---------- Header ---------- */
+.tech-stack__header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+.tech-stack__header .section-subtitle {
+  margin: 0 auto;
+}
+
+/* ---------- Grid ---------- */
+.tech-stack__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+/* ---------- Card ---------- */
+.tech-stack__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  cursor: default;
+  position: relative;
+}
+
+/* Override the default glass-card hover to customize for tech cards */
+.tech-stack__card.glass-card:hover {
+  border-color: var(--tech-color, var(--color-primary));
+  box-shadow: 0 0 24px color-mix(in srgb, var(--tech-color, var(--color-primary)) 30%, transparent);
+  transform: translateY(-6px);
+}
+
+/* ---------- Icon ---------- */
+.tech-stack__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-spring);
+}
+
+.tech-stack__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tech-stack__card:hover .tech-stack__icon {
+  transform: scale(1.15);
+}
+
+/* ---------- Name ---------- */
+.tech-stack__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-base);
+}
+
+.tech-stack__card:hover .tech-stack__name {
+  color: var(--color-text);
+}
+
+/* ---------- Floating animation on alternate cards ---------- */
+.tech-stack__card:nth-child(odd) {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.tech-stack__card:nth-child(3n) {
+  animation: float 7s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.tech-stack__card:nth-child(4n + 2) {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Pause float on hover for a clean lift effect */
+.tech-stack__card:hover {
+  animation-play-state: paused;
+}
+
+/* ---------- Background Grid Decoration ---------- */
+.tech-stack__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+/* ==========================================================
+   Tablet — 768px+
+   ========================================================== */
+@media (min-width: 768px) {
+  .tech-stack__header {
+    margin-bottom: var(--space-20);
+  }
+
+  .tech-stack__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+
+  .tech-stack__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .tech-stack__name {
+    font-size: var(--text-base);
+  }
+
+  .tech-stack__card {
+    padding: var(--space-10) var(--space-6);
+  }
+}
+
+/* ==========================================================
+   Desktop — 1024px+
+   ========================================================== */
+@media (min-width: 1024px) {
+  .tech-stack__grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-6);
+  }
+
+  .tech-stack__icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  .tech-stack__card {
+    padding: var(--space-12) var(--space-6);
+  }
+}
